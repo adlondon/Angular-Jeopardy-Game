@@ -13,11 +13,12 @@ angular
     var categoryArr = [urlOne, urlTwo, urlThree, urlFour, urlFive, urlSix]
 
     function getCategories() {
-    var promises = [];
-    categoryArr.forEach(function(el) {
-      var promise = $http.get(coors + encodeURIComponent(el))
-      promises.push(promise)
-      })
+      console.log("SHOW ME")
+      var promises = [];
+      categoryArr.forEach(function(el) {
+        var promise = $http.get(coors + encodeURIComponent(el))
+        promises.push(promise)
+        })
       return $q.all(promises)
     };
 

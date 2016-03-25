@@ -31,10 +31,12 @@ require('./directives/questionDirective');
 angular
   .module('jeopardy')
   .controller('CategoryController', function($scope,$location,CategoryService) {
+    console.log("AM I HERE");
     CategoryService.getCategories()
     .then(function(data) {
-    return  $scope.categories = data
-      })
+      console.log(data);
+      return  $scope.categories = data
+    })
 })
 
 },{}],3:[function(require,module,exports){
@@ -53,11 +55,12 @@ angular
     var categoryArr = [urlOne, urlTwo, urlThree, urlFour, urlFive, urlSix]
 
     function getCategories() {
-    var promises = [];
-    categoryArr.forEach(function(el) {
-      var promise = $http.get(coors + encodeURIComponent(el))
-      promises.push(promise)
-      })
+      console.log("SHOW ME")
+      var promises = [];
+      categoryArr.forEach(function(el) {
+        var promise = $http.get(coors + encodeURIComponent(el))
+        promises.push(promise)
+        })
       return $q.all(promises)
     };
 
@@ -73,22 +76,17 @@ angular
   .directive('titleBar', function() {
     return {
       templateUrl: '../templates/gameBoardTemplate.html',
-      restrict: 'E',
+      restrict: 'EAC',
       scope: {
-        title: '@'
-        // id: '@'
+        title: '@',
+        valueOne: '@',
+        valueTwo: '@',
+        valueThree: '@',
+        valueFour: '@',
+        valueFive: '@'
       },
 
-
-
-      // link: function(scope,element,attributes) {
-      //   console.log("el", element)
-      //   element.bind('mouseover', function(event) {
-      //     if(attributes.weatherHuman === "henry") {
-      //       this.style.color = 'red';
-      //     }
-      //   })
-      // }
+//////LOOOK UP = SIGN INSTEAD OF @////////////\
     }
   })
 

@@ -4,21 +4,16 @@ angular
   .directive('titleBar', function() {
     return {
       templateUrl: '../templates/gameBoardTemplate.html',
-      restrict: 'E',
+      restrict: 'EAC',
       scope: {
-        title: '@'
-        // id: '@'
+        title: '@',
+        valueOne: '@',
+        valueTwo: '@',
+        valueThree: '@',
+        valueFour: '@',
+        valueFive: '@'
       },
 
-
-
-      // link: function(scope,element,attributes) {
-      //   console.log("el", element)
-      //   element.bind('mouseover', function(event) {
-      //     if(attributes.weatherHuman === "henry") {
-      //       this.style.color = 'red';
-      //     }
-      //   })
-      // }
+//////LOOOK UP = SIGN INSTEAD OF @////////////\
     }
   })
