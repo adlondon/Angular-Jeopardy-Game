@@ -1,0 +1,8 @@
+
+  <div class="col-sm-2">
+    <h5 class="col-sm-12">{{title}}</h5>
+    <div/>
+
+    <div ng-repeat="question in categories">
+    <question-col quest-value="{{question.data.clues.value}}" answer="{{}}" question="{{}}"></question-col>
+  </div>
