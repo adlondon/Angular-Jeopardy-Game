@@ -21,7 +21,6 @@ angular
         })
       return $q.all(promises)
     };
-
     return {
       getCategories: getCategories
     }

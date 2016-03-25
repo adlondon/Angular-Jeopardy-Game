@@ -1,10 +1,10 @@
 angular
   .module('jeopardy')
-  .controller('CategoryController', function($scope,$location,CategoryService) {
-    console.log("AM I HERE");
+  .controller('CategoryController', function($scope, $rootScope, $location,CategoryService) {
+    $rootScope.score= 0
     CategoryService.getCategories()
     .then(function(data) {
       console.log(data);
-      return  $scope.categories = data
-    })
+      $scope.categories = data
+    });
 })

@@ -30,13 +30,13 @@ require('./directives/questionDirective');
 },{"./category/category.controller":2,"./category/category.service":3,"./directives/categoryDirective":4,"./directives/questionDirective":5,"./question/question.controller":10,"./question/question.service":11,"angular":9,"angular-route":7}],2:[function(require,module,exports){
 angular
   .module('jeopardy')
-  .controller('CategoryController', function($scope,$location,CategoryService) {
-    console.log("AM I HERE");
+  .controller('CategoryController', function($scope, $rootScope, $location,CategoryService) {
+    $rootScope.score= 0
     CategoryService.getCategories()
     .then(function(data) {
       console.log(data);
-      return  $scope.categories = data
-    })
+      $scope.categories = data
+    });
 })
 
 },{}],3:[function(require,module,exports){
@@ -63,7 +63,6 @@ angular
         })
       return $q.all(promises)
     };
-
     return {
       getCategories: getCategories
     }
@@ -76,15 +75,42 @@ angular
   .directive('titleBar', function() {
     return {
       templateUrl: '../templates/gameBoardTemplate.html',
-      restrict: 'EAC',
+      restrict: 'EA',
       scope: {
         title: '@',
         valueOne: '@',
         valueTwo: '@',
         valueThree: '@',
         valueFour: '@',
-        valueFive: '@'
+        valueFive: '@',
+        idOne: '@',
+        idTwo: '@',
+        idThree: '@',
+        idFour: '@',
+        idFive: '@',
+        questOne: '@',
+        questTwo: '@',
+        questThree: '@',
+        questFour: '@',
+        questFive: '@',
+        answerFive: '@',
+        answerOne: '@',
+        answerTwo: '@',
+        answerThree: '@',
+        answerFour: '@',
+        answerFive: '@',
+        addScore: "&"
       },
+      controller: function ($rootScope,$scope) {
+        console.log("I SHOULD HAVE 6")
+        $scope.addScore = function(val) {
+          console.log('I CLICKED A BUTTN', val);
+        }
+      },
+      link: function (scope, element ) {
+          //  window.elm = element;
+
+      }
 
 //////LOOOK UP = SIGN INSTEAD OF @////////////\
     }

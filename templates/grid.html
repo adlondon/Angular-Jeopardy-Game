@@ -1,12 +1,29 @@
 
-
+<h1>SCORE: {{score}}</h1>
 <div ng-if="categories" ng-repeat ="category in categories">
-  <!-- {{category.data.clues[0].value}} -->
   <title-bar title="{{category.data.title}}"
              value-one="{{category.data.clues[0].value}}"
              value-two="{{category.data.clues[1].value}}"
              value-three="{{category.data.clues[2].value}}"
              value-four="{{category.data.clues[3].value}}"
-             value-five="{{category.data.clues[4].value}}">
+             value-five="{{category.data.clues[4].value}}"
+             id-one="{{category.data.clues[0].id}}"
+             id-two="{{category.data.clues[1].id}}"
+             id-three="{{category.data.clues[2].id}}"
+             id-four="{{category.data.clues[3].id}}"
+             id-five="{{category.data.clues[4].id}}"
+             quest-one="{{category.data.clues[0].question}}"
+             quest-two="{{category.data.clues[1].question}}"
+             quest-three="{{category.data.clues[2].question}}"
+             quest-four="{{category.data.clues[3].question}}"
+             quest-five="{{category.data.clues[4].question}}"
+             answer-one="{{category.data.clues[0].answer}}"
+             answer-two="{{category.data.clues[1].answer}}"
+             answer-three="{{category.data.clues[2].answer}}"
+             answer-four="{{category.data.clues[3].answer}}"
+             answer-five="{{category.data.clues[4].answer}}"
+             add-score ="addScore()"
+             >
    </title-bar>
+
 </div>
