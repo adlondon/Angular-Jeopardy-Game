@@ -34,7 +34,7 @@ angular
     $rootScope.score= 0
     CategoryService.getCategories()
     .then(function(data) {
-      console.log(data);
+      // console.log(data);
       $scope.categories = data
     });
 })
@@ -77,70 +77,40 @@ angular
       templateUrl: '../templates/gameBoardTemplate.html',
       restrict: 'EA',
       scope: {
-        title: '@',
-        valueOne: '@',
-        valueTwo: '@',
-        valueThree: '@',
-        valueFour: '@',
-        valueFive: '@',
-        idOne: '@',
-        idTwo: '@',
-        idThree: '@',
-        idFour: '@',
-        idFive: '@',
-        questOne: '@',
-        questTwo: '@',
-        questThree: '@',
-        questFour: '@',
-        questFive: '@',
-        answerFive: '@',
-        answerOne: '@',
-        answerTwo: '@',
-        answerThree: '@',
-        answerFour: '@',
-        answerFive: '@',
+        question: '=',
+        clues: '=',
         addScore: "&"
       },
       controller: function ($rootScope,$scope) {
-        console.log("I SHOULD HAVE 6")
         $scope.addScore = function(val) {
-          console.log('I CLICKED A BUTTN', val);
+          console.log("SCOPE", $scope);
+          window.glob = $scope
+          // console.log("THIS", $this);
+          // console.log("answerOne", answerOne);
         }
-      },
-      link: function (scope, element ) {
-          //  window.elm = element;
-
       }
-
-//////LOOOK UP = SIGN INSTEAD OF @////////////\
     }
   })
 
 },{}],5:[function(require,module,exports){
-
-angular
-  .module('jeopardy')
-  .directive('questionCol', function() {
-    return {
-      templateUrl: '../templates/questionTemplate.html',
-      restrict: 'E',
-      scope: {
-        question: '@',
-        questValue: '@',
-        answer: '@',
-        questId: '@',
-        category_id: '@'
-      },
-      // link: function(scope,element,attributes) {
-      //   console.log("el", element)
-      //   element.bind('mouseover', function(event) {
-      //     if(attributes.weatherHuman === "henry") {
-      //       this.style.color = 'red';
-      //     }
-      //   })
-      // }
-    }
-  })
+// 
+// angular
+//   .module('jeopardy')
+//   .directive('questionBar', function() {
+//     return {
+//       templateUrl: '../templates/gameBoardTemplate.html',
+//       restrict: 'AE',
+//       scope: {
+//         answer: '='
+//       },
+//       controller: function ($rootScope,$scope) {
+//         $scope.addScore = function(val) {
+//           console.log("SCOPE", $scope);
+//           window.glob = $scope
+//           // console.log("THIS", $this);
+//           // console.log("answerOne", answerOne);
+//     }
+//   })
 
 },{}],6:[function(require,module,exports){
 /**
