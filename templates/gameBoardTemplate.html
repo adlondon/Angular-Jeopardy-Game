@@ -2,7 +2,7 @@
   <div class="col-sm-2">
     <h5 class="col-sm-12">{{question.title}}</h5>
     <div ng-repeat="clue in question.clues">
-      <div class="col-sm-12"><button data-toggle="modal" data-target="#{{clue.id}}">{{clue.value}}</button>
+      <div data-id="{{clue.id}}" class="col-sm-12"><button data-toggle="modal" data-target="#{{clue.id}}">{{clue.value}}</button>
         <div id="{{clue.id}}" class="modal fade" role="dialog">
           <div class="modal-dialog">
             <!-- Modal content-->
@@ -15,7 +15,7 @@
                 <p>{{clue.question}}</p>
               </div>
               <div class="modal-footer">
-                <form role="form" class="" ng-submit="addScore(userInput)">
+                <form role="form" class="" ng-submit="addScore(userInput, clue.answer, clue.value)">
                   <input placeholder="{{clue.answer}}"type="text" id="userAnswer" ng-model="userInput">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   <button type="submit" class="btn btn-md btn primary" name="button" value="submit">Submit</button>
@@ -25,5 +25,5 @@
           </div>
         </div>
       </div>
-  </div>
     </div>
+  </div>

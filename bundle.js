@@ -78,15 +78,18 @@ angular
       restrict: 'EA',
       scope: {
         question: '=',
-        clues: '=',
         addScore: "&"
       },
-      controller: function ($rootScope,$scope) {
-        $scope.addScore = function(val) {
+      controller: function ($rootScope,$scope, $element) {
+        $scope.addScore = function(input, answer, value) {
           console.log("SCOPE", $scope);
+          console.log("ANSWER", answer);
           window.glob = $scope
-          // console.log("THIS", $this);
-          // console.log("answerOne", answerOne);
+          if (input === answer) {
+            $rootScope.score += value
+          } else {
+            $rootScope.score -= value
+          }
         }
       }
     }

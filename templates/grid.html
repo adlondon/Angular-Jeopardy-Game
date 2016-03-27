@@ -1,5 +1,7 @@
 
 <h1>SCORE: {{score}}</h1>
 <div ng-repeat ="category in categories">
-  <title-bar question =category.data></title-bar>
+  <title-bar question =category.data
+              clue=category.data.clues[0].answer
+  ></title-bar>
 </div>
