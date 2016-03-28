@@ -1,6 +1,44 @@
+div.score-container {
+  height: 78px;
+}
 
+.modal-content {
+   background-color: rgba(0,0,140,1) !important;
+}
 
+.modal-header {
+  border-bottom: none !important;
+  color: white;
+}
+.modal-body {
+  color: goldenrod;
+  font-size: 24px;
+}
+.modal-footer {
+  border-top: none !important;
+}
 
+.answer-span {
+  color: goldenrod;
+  font-size: 24px;
+  margin-right: 24px;
+}
+
+.score {
+  width: 100px;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  margin-left: 20px;
+  height: 58px;
+  border-radius: 4px;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+}
 
 body.body-class {
   /*box-sizing: border-box;*/
@@ -15,6 +53,7 @@ div.col-sm-2 {
   margin: 0;
   text-align: center;
 }
+
 button.button-value {
   width: 100%;
   padding: 0;
