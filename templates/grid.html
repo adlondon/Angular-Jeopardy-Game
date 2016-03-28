@@ -1,7 +1,5 @@
-
-<h1>SCORE: {{score}}</h1>
+<img class="jeo-logo" src="http://vignette2.wikia.nocookie.net/gameshows/images/a/a7/Jeopardy!_Logo.png/revision/latest?cb=20130204000954" alt="" />
+  <span class="score">SCORE: {{score}}</span>
 <div ng-repeat ="category in categories">
-  <title-bar question =category.data
-              clue=category.data.clues[0].answer
-  ></title-bar>
+  <title-bar question =category.data></title-bar>
 </div>

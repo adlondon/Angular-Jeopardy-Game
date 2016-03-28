@@ -11,14 +11,19 @@ angular
       },
       controller: function ($rootScope,$scope, $element) {
         $scope.addScore = function(input, answer, value) {
-          console.log("SCOPE", $scope);
-          console.log("ANSWER", answer);
-          window.glob = $scope
           if (input === answer) {
-            $rootScope.score += value
+            $rootScope.score += value;
           } else {
             $rootScope.score -= value
           }
+        }
+        $scope.hideModal = function (id) {
+          $('button.' + id).prop("disabled", true)
+          $('button.' + id).toggle()
+          $('#' + id).modal('hide')
+        }
+        $scope.hideValue = function (id) {
+          $('div.' + id).toggle()
         }
       }
     }

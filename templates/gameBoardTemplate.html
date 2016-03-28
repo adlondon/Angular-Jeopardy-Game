@@ -1,24 +1,35 @@
 
   <div class="col-sm-2">
-    <h5 class="col-sm-12">{{question.title}}</h5>
+    <div class="col-sm-12 cat-title">
+      <h5>{{question.title}}</h5>
+    </div>
     <div ng-repeat="clue in question.clues">
-      <div data-id="{{clue.id}}" class="col-sm-12"><button data-toggle="modal" data-target="#{{clue.id}}">{{clue.value}}</button>
+      <div data-id="{{clue.id}}" class="col-sm-12"><button class="btn btn-primary {{clue.id}} button-value" data-toggle="modal" data-target="#{{clue.id}}">${{clue.value}}</button>
+        <button class="btn btn-primary {{clue.id}} button-value" style="display: none" data-toggle="modal" data-target="#{{clue.id}}"></button>
         <div id="{{clue.id}}" class="modal fade" role="dialog">
           <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Value: {{clue.value}}</h4>
+                <h4 class="modal-title">${{clue.value}}</h4>
               </div>
-              <div class="modal-body">
+              <div class="modal-body {{clue.id}}">
                 <p>{{clue.question}}</p>
               </div>
-              <div class="modal-footer">
+              <div class="modal-body {{clue.id}}" style="display: none">
+                <p>{{clue.answer}}</p>
+              </div>
+              <div class="modal-footer {{clue.id}}">
                 <form role="form" class="" ng-submit="addScore(userInput, clue.answer, clue.value)">
                   <input placeholder="{{clue.answer}}"type="text" id="userAnswer" ng-model="userInput">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-md btn primary" name="button" value="submit">Submit</button>
+                  <button ng-click="hideValue(clue.id)" type="submit" class="btn btn-md btn primary" name="button" value="submit">Submit</button>
+                </form>
+              </div>
+              <div class="modal-footer {{clue.id}}" style="display: none">
+                <form role="form">
+                  <input placeholder="{{clue.answer}}"type="text" id="userAnswer" ng-model="userInput">
+                  <button ng-click="hideModal(clue.id)" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </form>
               </div>
             </div>
