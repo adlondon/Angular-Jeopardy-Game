@@ -2,23 +2,36 @@ div.score-container {
   height: 78px;
 }
 
+div.home-button-container {
+  text-align: center;
+  margin-top: 47%;
+}
+
+.start {
+  background-color: #041f9d !important
+}
+
 .modal-content {
-   background-color: rgba(0,0,140,1) !important;
+   background-color: #041f9d !important;
 }
 
 .modal-header {
   border-bottom: none !important;
-  color: white;
+  color: goldenrod;
 }
 .modal-body {
-  color: goldenrod;
-  font-size: 24px;
+  font-family: Vollkorn, Helvetica;
+  height: 350px;
+  text-transform: uppercase;
+  color: white;
+  font-size: 35px;
 }
 .modal-footer {
   border-top: none !important;
 }
 
 .answer-span {
+  font-family: Vollkorn, Helvetica;
   color: goldenrod;
   font-size: 24px;
   margin-right: 24px;
@@ -41,9 +54,6 @@ div.score-container {
 }
 
 body.body-class {
-  /*box-sizing: border-box;*/
-  border-style:
-  background-color: black;
   background-image: url("http://i.onionstatic.com/avclub/5359/44/16x9/960.jpg");
   background-size: cover;
 }
@@ -61,13 +71,13 @@ button.button-value {
   font-size: 50px;
   color: goldenrod;
   height: 90px;
-  background-color: blue;
+  background-color: #041f9d;
   font-weight: 800;
 }
 
 div.cat-title {
   height: 65px;
-  background-color: blue;
+  background-color: #041f9d;
   color: white;
   margin: 15px;
   width: 160px;

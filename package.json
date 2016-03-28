@@ -23,5 +23,8 @@
     "browserify": "^13.0.0",
     "serve": "^1.4.0",
     "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "underscore": "^1.8.3"
   }
 }

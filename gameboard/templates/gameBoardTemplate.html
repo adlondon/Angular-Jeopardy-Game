@@ -12,21 +12,20 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">${{clue.value}}</h4>
               </div>
               <div class="modal-body">
                 <p>{{clue.question}}</p>
               </div>
               <div class="modal-footer {{clue.id}}">
                 <form role="form" class="" ng-submit="addScore(userInput, clue.answer, clue.value)">
-                  <input placeholder="{{clue.answer}}"type="text" id="userAnswer" ng-model="userInput">
+                  <input placeholder=""type="text" id="userAnswer" ng-model="userInput">
                   <button ng-click="hideValue(clue.id)" type="submit" class="btn btn-md btn primary" name="button" value="submit">Submit</button>
                 </form>
               </div>
               <div class="modal-footer {{clue.id}}" style="display: none">
                 <form role="form">
                   <span class="answer-span">Answer: {{clue.answer}}</span>
-                  <input placeholder="{{clue.answer}}"type="text" id="userAnswer" ng-model="userInput">
+                  <input placeholder=""type="text" id="userAnswer" ng-model="userInput">
                   <button ng-click="hideModal(clue.id)" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </form>
               </div>
