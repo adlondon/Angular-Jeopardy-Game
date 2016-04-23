@@ -21,31 +21,27 @@ angular
 require('./gameboard');
 
 },{"./gameboard":6,"angular":10,"angular-route":8}],2:[function(require,module,exports){
-var _ = require('underscore')
 
 angular
   .module('gameboard')
-  .controller('CategoryController', function($scope, $rootScope, $location,CategoryService) {
+  .controller('CategoryController', CategoryController)
+    CategoryController.$inject = ['$scope', '$rootScope', '$location', 'CategoryService']
+    function CategoryController($scope, $rootScope, $location,CategoryService) {
+    var vm = this
     $rootScope.score= 0
     CategoryService.getCategories()
     .then(function(data) {
-      $scope.categories = data
-      $scope.categories.forEach(function (el) {
-        if(el.data.clues_count > 5) {
-          el.data.clues = _.first(_.shuffle(el.data.clues), 5)
-        }
-        for (var i =0; i < 5; i++) {
-          el.data.clues[i].value = 200 * (i + 1)
-        }
-      })
+      vm.categories = data
     });
+}
 
-})
+},{}],3:[function(require,module,exports){
+var _ = require('underscore')
 
-},{"underscore":11}],3:[function(require,module,exports){
+
 angular
   .module('gameboard')
-  .service('CategoryService',function($http, $q, $cacheFactory) {
+  .service('CategoryService',function($http, $q) {
 
     var base = "http://jservice.io/api/category?id="
     var categoryArr = []
@@ -56,8 +52,22 @@ angular
       for (var i = 0; i < 6; i ++) {
         promises.push($http.get(base + randomizer()))
       }
-      return $q.all(promises)
-    };
+
+      return $q.all(promises).then(function(categories) {
+        categories.forEach(function (el) {
+          //////Brandon Hare helped with shuffle//////
+          if(el.data.clues_count > 5) {
+            el.data.clues = _.first(_.shuffle(el.data.clues), 5)
+          }
+          for (var i =0; i < 5; i++) {
+            el.data.clues[i].value = 200 * (i + 1)
+          }
+        })
+      return categories
+      })
+    }
+
+
     function randomizer() {
       return Math.ceil(Math.random() * 18418)
     }
@@ -66,39 +76,12 @@ angular
     }
 })
 
-// angular
-//   .module('gameboard')
-//   .service('CategoryService',function($http, $q, $cacheFactory) {
-//
-//     var urlOne = 'http://jservice.io/api/category?id=11531';
-//     var urlTwo = 'http://jservice.io/api/category?id=11559';
-//     var urlThree = 'http://jservice.io/api/category?id=11574';
-//     var urlFour = 'http://jservice.io/api/category?id=11587';
-//     var urlFive = 'http://jservice.io/api/category?id=11580';
-//     var urlSix = 'http://jservice.io/api/category?id=11599';
-//     var coors = "https://free-cors-server.herokuapp.com/any-request/"
-//
-//     var categoryArr = [urlOne, urlTwo, urlThree, urlFour, urlFive, urlSix]
-//
-//     function getCategories() {
-//       console.log("SHOW ME")
-//       var promises = [];
-//       categoryArr.forEach(function(el) {
-//         var promise = $http.get(coors + encodeURIComponent(el))
-//         promises.push(promise)
-//         })
-//       return $q.all(promises)
-//     };
-//     return {
-//       getCategories: getCategories
-//     }
-// })
-
-},{}],4:[function(require,module,exports){
+},{"underscore":11}],4:[function(require,module,exports){
 
 angular
   .module('gameboard')
-  .directive('titleBar', function() {
+  .directive('titleBar', titleBar);
+    function titleBar() {
     return {
       templateUrl: 'gameboard/templates/gameBoardTemplate.html',
       restrict: 'EA',
@@ -106,25 +89,29 @@ angular
         question: '=',
         // addScore: "&"
       },
-      controller: function ($rootScope,$scope) {
-        $scope.addScore = function(input, answer, value) {
-          if (input === answer) {
-            $rootScope.score += value;
-          } else {
-            $rootScope.score -= value
-          }
-        };
-        $scope.hideModal = function (id) {
-          $('button.' + id).toggle()
-          $('#' + id).modal('hide')
-        };
-        $scope.hideValue = function (id) {
-          $('button.' + id).prop("disabled", true)
-          $('div.' + id).toggle()
-        };
+      controller: BoardCtrl
+    };
+  }
+
+  BoardCtrl.$inject = ['$rootScope','$scope'];
+  function BoardCtrl ($rootScope,$scope) {
+    $scope.addScore = function(input, answer, value) {
+      // https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/
+      if (input === $(answer).toLowerCase()) {
+        $rootScope.score += value;
+      } else {
+        $rootScope.score -= value
       }
     };
-  })
+    $scope.hideModal = function (id) {
+      $('button.' + id).toggle()
+      $('#' + id).modal('hide')
+    };
+    $scope.hideValue = function (id) {
+      $('button.' + id).prop("disabled", true)
+      $('div.' + id).toggle()
+    };
+  }
 
 },{}],5:[function(require,module,exports){
 var angular = require('angular');
@@ -136,7 +123,7 @@ angular
     $routeProvider
     .when('/gameboard',{
        templateUrl: "gameboard/templates/grid.html",
-       controller: "CategoryController"
+       controller: "CategoryController as CategoryCtrl"
      })
  })
 

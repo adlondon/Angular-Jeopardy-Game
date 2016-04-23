@@ -35,3 +35,39 @@
       </div>
     </div>
   </div>
+
+  <!-- <div class="col-sm-2">
+    <div class="col-sm-12 cat-title">
+      <h5>{{question.title}}</h5>
+    </div>
+    <div ng-repeat="clue in question.clues">
+      <div data-id="{{clue.id}}" class="col-sm-12"><button class="btn btn-primary {{clue.id}} button-value" data-toggle="modal" data-target="#{{clue.id}}">${{clue.value}}</button>
+        <button class="btn btn-primary {{clue.id}} button-value" style="display: none" data-toggle="modal" data-target="#{{clue.id}}"></button>
+        <div id="{{clue.id}}" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>{{clue.question}}</p>
+              </div>
+              <div class="modal-footer {{clue.id}}">
+                <form role="form" class="" ng-submit="addScore(userInput, clue.answer, clue.value)">
+                  <input placeholder=""type="text" id="userAnswer" ng-model="userInput">
+                  <button ng-click="hideValue(clue.id)" type="submit" class="btn btn-md btn primary" name="button" value="submit">Submit</button>
+                </form>
+              </div>
+              <div class="modal-footer {{clue.id}}" style="display: none">
+                <form role="form">
+                  <span class="answer-span">Answer: {{clue.answer}}</span>
+                  <input placeholder=""type="text" id="userAnswer" ng-model="userInput">
+                  <button ng-click="hideModal(clue.id)" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->

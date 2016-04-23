@@ -7,6 +7,6 @@ angular
     $routeProvider
     .when('/gameboard',{
        templateUrl: "gameboard/templates/grid.html",
-       controller: "CategoryController"
+       controller: "CategoryController as CategoryCtrl"
      })
  })
