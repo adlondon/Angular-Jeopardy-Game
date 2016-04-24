@@ -8,7 +8,6 @@ angular
       restrict: 'EA',
       scope: {
         question: '=',
-        // addScore: "&"
       },
       controller: BoardCtrl
     };
@@ -17,8 +16,11 @@ angular
   BoardCtrl.$inject = ['$rootScope','$scope'];
   function BoardCtrl ($rootScope,$scope) {
     $scope.addScore = function(input, answer, value) {
-      // https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/
-      if (input === $(answer).toLowerCase()) {
+      console.log(input, answer);
+      var parsedInput = input.toLowerCase().trim(); 
+      var parsedAnswer = answer.toLowerCase().replace(/<(?:.|\n)*?>/gm, '').replace(/\\/g, '');
+      console.log(parsedInput, parsedAnswer);
+      if (parsedAnswer.includes(parsedInput)) {
         $rootScope.score += value;
       } else {
         $rootScope.score -= value
